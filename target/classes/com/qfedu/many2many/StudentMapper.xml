@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--1)mapper接口的全限定名要和mapper映射文件的namespace值一致。
+2)mapper方法名称接口的要和mapper映射文件的statement的id一致。
+3)mapper接口的方法参数类型要和mapper映射文件的statement的parameterType的值一致，而且它的参数是一个。
+4)mapper接口的方法返回值类型要和mapper映射文件的statement的resultType的值一致-->
+<mapper namespace="com.qfedu.many2many.StudentDao">
+    <resultMap id="stuMap" type="com.qfedu.many2many.Student">
+        <id column="sid" property="sid"></id>
+        <result column="sname" property="sname"></result>
+        <collection property="courseList" javaType="list" ofType="course">
+            <id column="cid" property="cid"></id>
+            <result column="cname" property="cname"></result>
+        </collection>
+    </resultMap>
+    <resultMap id="stuMap2" type="com.qfedu.many2many.Student">
+        <id column="sid" property="sid"></id>
+        <result column="sname" property="sname"></result>
+        <collection property="courseList" javaType="list" ofType="course" column="sid"
+                    select="com.qfedu.many2many.CourseDao.findBySid"></collection>
+    </resultMap>
+<!--    嵌套结果的写法 通过学生查课程-->
+    <select id="findById" parameterType="int" resultMap="stuMap">
+        SELECT s.*, c.* FROM t_student s
+        INNER JOIN t_reltion tr
+        ON s.sid = tr.sid
+        INNER JOIN t_course c
+        ON c.cid = tr.cid
+        WHERE s.sid = #{sid}
+    </select>
+<!--    嵌套查询的写法-->
+    <select id="findById1" parameterType="int" resultMap="stuMap2">
+        select * from t_student where sid = #{sid}
+    </select>
+</mapper>
