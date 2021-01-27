@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.one2many.EmployeeDao">
+    <resultMap id="empMap" type="com.qfedu.one2many.Employee">
+        <id column="eid" property="eid"></id>
+        <result column="ename" property="ename"></result>
+    </resultMap>
+    <select id="findByDeptId" parameterType="int" resultType="com.qfedu.one2many.Employee">
+        select * from t_emp where deptId = #{did}
+    </select>
+
+    <resultMap id="empMap2" type="com.qfedu.one2many.Employee">
+        <id column="eid" property="eid"></id>
+        <result column="ename" property="ename"></result>
+<!--        嵌套结果的写法   一的关系-->
+        <association property="dept" resultMap="com.qfedu.one2many.DepartmentDao.deptMap0"></association>
+    </resultMap>
+<!--    如果开启了全局的懒加载，通过fetchType,设置具体的sql是否需要懒加载   -->
+    <resultMap id="empMap3" type="com.qfedu.one2many.Employee">
+        <id column="eid" property="eid"></id>
+        <result column="ename" property="ename"></result>
+        <association property="dept" column="deptId" select="com.qfedu.one2many.DepartmentDao.findByDeptId" fetchType="eager"></association>
+    </resultMap>
+<!--    通过员工查部门  一对一的关系  如果开启了全局的懒加载，通过fetchType,设置具体的sql是否需要懒加载   -->
+    <select id="findByEid" parameterType="int" resultMap="empMap2">
+        SELECT * FROM t_emp e INNER JOIN t_dept d ON  e.deptId=d.did WHERE e.eid = #{eid}
+    </select>
+<!--    -->
+    <select id="findByEid1" parameterType="int" resultMap="empMap3">
+        select * from t_emp where eid = #{eid}
+    </select>
+</mapper>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 参数设置 -->
+    <settings>
+        <!-- 启用懒加载，必须按照下面方式配置 -->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!-- 将积极加载改为消极加载即按需加载。必须写,且为false才会懒加载 -->
+        <setting name="aggressiveLazyLoading" value="false"/>
+        <!-- 开启二级缓存 -->
+        <setting name="cacheEnabled" value="true"/>
+
+    </settings>
+
+<!--    设置别名-->
+
+    <typeAliases>
+<!--        type  类型  实体类    alias 指定的别名的名字-->
+        <typeAlias type="com.qfedu.first.Employee" alias="employee"></typeAlias>
+        <typeAlias type="com.qfedu.many2many.Course" alias="course"></typeAlias>
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/java2010?useSSL=false"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+    </environments>
+<!--    在主配置文件见设置映射的配置文件，不然无法使用映射的配置文件-->
+    <mappers>
+        <mapper resource="com/qfedu/one2many/DepartmentMapper.xml"/>
+        <mapper resource="com/qfedu/one2many/EmployeeMapper.xml"/>
+        <mapper resource="com/qfedu/many2many/StudentMapper.xml"/>
+        <mapper resource="com/qfedu/many2many/CourseMapper.xml"/>
+        <mapper resource="com/qfedu/cache/EmpMapper.xml"/>
+    </mappers>
+</configuration>

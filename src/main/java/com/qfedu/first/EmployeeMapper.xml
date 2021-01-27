@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace  命名空间   必须是唯一的-->
+<mapper namespace="empMapper">
+
+
+<!--    结果的映射关系-->
+    <resultMap id="empResult" type="com.qfedu.first.Employee">
+<!--        id表示的是主键-->
+        <id column="id" property="id"></id>
+<!--        非主键-->
+        <result column="ename" property="name"></result>
+        <result column="age" property="age"></result>
+        <result column="sex" property="sex"></result>
+        <result column="phone" property="phone"></result>
+    </resultMap>
+<!--    执行插入的操作！！！  employee执行插入一条数据的操作-->
+<!--    id 在映射文件中华要唯一-->
+    <insert id="add">
+        insert into employee(name, age, sex, phone) values('骚磊', 78, "女", "1637738889")
+    </insert>
+<!--    方法  void add2(Empployee employee)-->
+<!--    parameterType 设置sql语句使用的参数
+        #{} 相当于sql语句中占位符  ?
+            如果参数是实体类对象（pojo） ，#{}里面的内容来自于对象的属性名字
+-->
+<!--    <insert id="add2" parameterType="com.qfedu.first.Employee">-->
+<!--    使用别名的写法-->
+    <insert id="add2" parameterType="employee">
+        insert into employee(name, age, sex, phone) values(#{name}, #{age}, #{sex}, #{phone})
+    </insert>
+<!--  参数是一个字符串   void add3(String name) -->
+    <insert id="add3" parameterType="string">
+        insert into employee(name) values(#{name})
+    </insert>
+<!--    参数是一个map集合  void add4()-->
+    <insert id="add4" parameterType="map">
+        insert into employee(name, age) values(#{name}, #{age})
+    </insert>
+<!--    参数是一个int类型的数据 void deleteById(int id)-->
+    <delete id="deleteById" parameterType="int">
+        delete  from employee where id = #{id}
+    </delete>
+<!--    修改-->
+    <update id="update" parameterType="employee">
+        update employee set name=#{name}, age=#{age}, sex=#{sex}, phone=#{phone} where id=#{id}
+
+    </update>
+<!--    查询和增删改不一样  查询的时候必须写resultType或者resultMap-->
+<!--    *  查询出来字段的数据  id   name， sex， age, phone-->
+<!--    实体类中的属性   id  name sex   age  phone-->
+    <select id="findAll" resultType="employee">
+        select * from employee
+    </select>
+    <select id="findById" parameterType="int" resultType="employee">
+        select * from employee where id =#{id}
+    </select>
+<!--    当数据查询出来的数据字段的名字和实体类中属性的名字不一致怎么办？-->
+    <select id="findById2" parameterType="int" resultMap="empResult">
+        select id, name ename, sex, age, phone from employee where id = #{id}
+    </select>
+<!--    #{}和${}的区别-->
+    <select id="findByAge" parameterType="employee" resultType="employee">
+        select * from employee where age = ${age}
+    </select>
+
+<!--    关于特殊符号的处理：
+xml中，<、 <=、& 属于特殊符号
+比如在映射配置中，select * from person where id<4会报错-->
+<!--    解决方案
+        1.使用字符实体进行替换  &nbsp;   &lt;&gt;
+        2.<![CDATA[原样输出的东西]]>  原样输出  我用这个
+-->
+    <select id="findByAge1" parameterType="int" resultType="employee">
+        <!--select * from employee where age &lt; #{age}-->
+        select * from employee where age <![CDATA[<=]]> #{age}
+    </select>
+
+</mapper>

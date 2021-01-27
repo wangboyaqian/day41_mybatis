@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--1)mapper接口的全限定名要和mapper映射文件的namespace值一致。
+2)mapper方法名称接口的要和mapper映射文件的statement的id一致。
+3)mapper接口的方法参数类型要和mapper映射文件的statement的parameterType的值一致，而且它的参数是一个。
+4)mapper接口的方法返回值类型要和mapper映射文件的statement的resultType的值一致-->
+<mapper namespace="com.qfedu.one2many.DepartmentDao">
+
+    <resultMap id="deptMap0" type="com.qfedu.one2many.Department">
+        <id column="did" property="did"></id>
+        <result column="dname" property="dname"></result>
+    </resultMap>
+    <resultMap id="deptMap" type="com.qfedu.one2many.Department">
+        <id column="did" property="did"></id>
+        <result column="dname" property="dname"></result>
+<!--        嵌套结果的第一种写法
+            多的关系
+            property 对象的属性
+            javaType 属性的类型
+            ofType 表示列表中元素的类型
+-->
+        <collection property="empList" javaType="list" ofType="com.qfedu.one2many.Employee">
+            <id column="eid" property="eid"></id>
+            <result column="ename" property="ename"></result>
+        </collection>
+    </resultMap>
+    <resultMap id="deptMap2" type="com.qfedu.one2many.Department">
+        <id column="did" property="did"></id>
+        <result column="dname" property="dname"></result>
+        <!--嵌套结果的第二种写法-->
+        <collection property="empList" javaType="list" ofType="com.qfedu.one2many.Employee"
+        resultMap="com.qfedu.one2many.EmployeeDao.empMap">
+
+        </collection>
+    </resultMap>
+    <resultMap id="deptMap3" type="com.qfedu.one2many.Department">
+        <id column="did" property="did"></id>
+        <result column="dname" property="dname"></result>
+<!--        嵌套查询   执行n + 1sql
+ column 另外执行sql语句需要的条件
+ select  另外一个sql语句
+-->
+        <collection property="empList" javaType="list" ofType="com.qfedu.one2many.Employee" column="did"
+                    select="com.qfedu.one2many.EmployeeDao.findByDeptId"></collection>
+    </resultMap>
+<!--    通过部门查员工-->
+<!--    <select id="findByDid" parameterType="int" resultMap="deptMap">-->
+    <select id="findByDid" parameterType="int" resultMap="deptMap2">
+        SELECT * FROM t_emp e INNER JOIN t_dept d ON e.deptId = d.did WHERE d.did = #{did}
+
+    </select>
+    <select id="findByDid2" parameterType="int" resultMap="deptMap3">
+        select * from t_dept where did  =#{did}
+    </select>
+
+    <select id="findAll"  resultMap="deptMap3">
+        select * from t_dept
+    </select>
+    <select id="findByDeptId" parameterType="int" resultType="com.qfedu.one2many.Department">
+        select * from t_dept where did = #{did}
+    </select>
+</mapper>
