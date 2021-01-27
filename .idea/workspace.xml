@@ -1,38 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1c71a8f0-ffbf-4eee-b1b0-f3450b6adbb3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/META-INF/day41_mybatis.kotlin_module" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/qfedu/cache/Demo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/qfedu/cache/EmpMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/qfedu/cache/Employee.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/qfedu/cache/EmployeeDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/qfedu/first/Demo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/qfedu/first/Demo2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/qfedu/first/Employee.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/qfedu/first/EmployeeMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/qfedu/many2many/Course.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/qfedu/many2many/CourseMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/qfedu/many2many/Demo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/qfedu/many2many/Student.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/qfedu/many2many/StudentDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/qfedu/many2many/StudentMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/qfedu/mapper/Demo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/qfedu/mapper/EmpMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/qfedu/mapper/Employee.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/qfedu/mapper/EmployeeDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/qfedu/one2many/Demo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/qfedu/one2many/Department.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/qfedu/one2many/DepartmentDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/qfedu/one2many/DepartmentMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/qfedu/one2many/Employee.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/qfedu/one2many/EmployeeDao.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/qfedu/one2many/EmployeeMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mybatis.xml" afterDir="false" />
-    </list>
+    <list default="true" id="1c71a8f0-ffbf-4eee-b1b0-f3450b6adbb3" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -82,8 +51,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/qfedu/cache/Demo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
+            <state relative-caret-position="492">
+              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
             </state>
           </provider>
         </entry>
@@ -157,6 +126,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="wangbo" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
@@ -438,16 +412,23 @@
       <workItem from="1611537487041" duration="14947000" />
       <workItem from="1611621757255" duration="12918000" />
       <workItem from="1611709201223" duration="3595000" />
-      <workItem from="1611733378581" duration="1127000" />
+      <workItem from="1611733378581" duration="1589000" />
     </task>
+    <task id="LOCAL-00001" summary="首次测试">
+      <created>1611735037017</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1611735037017</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32587000" />
+    <option name="totallyTimeSpent" value="33049000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.260745" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -483,6 +464,11 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="首次测试" />
+    <option name="LAST_COMMIT_MESSAGE" value="首次测试" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/com/qfedu/first/Employee.java">
@@ -773,8 +759,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/qfedu/cache/Demo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="48" column="25" selection-start-line="48" selection-start-column="25" selection-end-line="48" selection-end-column="25" />
+        <state relative-caret-position="492">
+          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
         </state>
       </provider>
     </entry>
